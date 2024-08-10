@@ -11,5 +11,26 @@
     <section class="header">
         <h1>Etch-A-Sketch</h1>
     </section>
+    <div class="main">
+        <div class="left">
+            <h3>Settings</h3>
+            <section class="color">
+                <span>Select a color: </span>
+                <input id="colorPicker" type="color">
+                <span id="colorIndicator" style="background-color: #5db4ff; width: 30px; height: 30px; border: 1px solid #5db4ff; border-radius: 20px;"></span>
+            </section>
+            <section class="draw">
+                <button id="penButton">Pen</button>
+                <button id="eraserButton">Eraser</button>
+                <button id="resetButton">Reset</button>
+            </section>
+        </div>
+        <div class="right">
+            <h3>Canvas</h3>
+            <div id="canvas" draggable="false">
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>

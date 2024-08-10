@@ -9,6 +9,71 @@ body {
 }
 
 .header {
-    background-color: rgb(224, 224, 224);
+    background-color: #5db4ff;
     text-align: center;
+}
+
+.main {
+    align-self: stretch;
+    display: flex;
+    margin: 20px;
+}
+
+.main .left {
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main .left .color {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main .left #colorPicker {
+    border: 1px solid #5db4ff;
+    border-radius: 20px;
+    padding: 0px;
+    visibility: collapse;
+}
+
+.main .left .draw {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.main .left .draw button {
+    border: 1px solid #5db4ff;
+    border-radius: 20px;
+    padding: 10px;
+    transition-duration: 200ms;
+    background-color: transparent;
+}
+
+.main .left .draw button:hover {
+    background-color: #5db4ff;
+}
+
+.right {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+.right h3 {
+    align-self: flex-end;
+}
+
+.right #canvas {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 400px;
+    margin-left: 20px;
+    box-shadow: 1px 1px 10px gray;
 }
