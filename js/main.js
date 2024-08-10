@@ -26,13 +26,24 @@ function registerGrid(size = 8) {
         item.draggable = false
 
         item.addEventListener('mouseover', () => {
+            let color = document.querySelector('#colorPicker').value
+
+            if(toolType == 'eraser'){
+                color = 'transparent'
+            }
+            if(toolType == 'rainbow'){
+                color = getRandomColor()
+            }
             
-            let color = toolType == 'pen' ? document.querySelector('#colorPicker').value : 'transparent'
             paintColor(item, color, drawing)
         })
     
         canvas.appendChild(item)
     }
+}
+
+function getRandomColor() {
+    return `#${Math.floor(Math.random()*16777215).toString(16)}`
 }
 
 function registerColorPicker() {
@@ -52,20 +63,31 @@ var toolType = 'pen'
 
 function registerDrawButtons() {
     let pen = document.querySelector('#penButton')
+    let rainbow = document.querySelector('#rainbowPenButton')
     let eraser = document.querySelector('#eraserButton')
     let reset = document.querySelector('#resetButton')
+    
     pen.style.backgroundColor = '#5db4ff'
 
     pen.addEventListener('click', () => {
         eraser.style.backgroundColor = 'transparent'
         pen.style.backgroundColor = '#5db4ff'
+        rainbow.style.backgroundColor = 'transparent'
         toolType = 'pen'
     })
 
     eraser.addEventListener('click', () => {
         pen.style.backgroundColor = 'transparent'
         eraser.style.backgroundColor = '#5db4ff'
+        rainbow.style.backgroundColor = 'transparent'
         toolType = 'eraser'
+    })
+
+    rainbow.addEventListener('click', () => {
+        pen.style.backgroundColor = 'transparent'
+        eraser.style.backgroundColor = 'transparent'
+        rainbow.style.backgroundColor = '#5db4ff'
+        toolType = 'rainbow'
     })
 
     reset.addEventListener('click', () => {
