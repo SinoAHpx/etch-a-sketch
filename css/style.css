@@ -17,7 +17,6 @@ body {
 .header {
     text-align: center;
     margin-bottom: auto
-    /* border-bottom: 1px dashed #5db4ff; */
 }
 
 .header h1 {
@@ -54,6 +53,20 @@ body {
     border-radius: 20px;
     padding: 0px;
     visibility: collapse;
+}
+
+.main .left .size {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #5db4ff;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.main .left .size #size {
+    color: #5db4ff;
+    background-color: transparent;
+    
 }
 
 .main .left .draw {

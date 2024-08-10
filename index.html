@@ -16,7 +16,14 @@
             <section class="color">
                 <span>Select a color: </span>
                 <input id="colorPicker" type="color">
-                <span id="colorIndicator" style="background-color: #5db4ff; width: 30px; height: 30px; border: 1px solid #5db4ff; border-radius: 20px;"></span>
+                <span id="colorIndicator" style="background-color: #000000; width: 30px; height: 30px; border: 1px solid #5db4ff; border-radius: 20px;"></span>
+            </section>
+            <section class="size">
+                <div>
+                    <span>Pen size: </span>
+                    <span class="value"></span>
+                </div>
+                <input type="range" id="size" min="5" max="100" value="10">
             </section>
             <section class="draw">
                 <button id="penButton">Pen</button>

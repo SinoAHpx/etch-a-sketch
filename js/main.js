@@ -6,39 +6,65 @@ function paintColor(item, color, drawing) {
     }
 }
 
-function registerGrid(size = 8) {
-    //400x400
-    let canvas = document.querySelector('#canvas')
-    let drawing = false
-    canvas.addEventListener('mousedown', () => {
-        drawing = true
-        console.log('Mouse down, drawing')
+function registerGridSize() {
+    registerGrid()
+
+    let size = document.querySelector('#size')
+    let valueDisplay = document.querySelector('.main .left .size .value')
+
+    valueDisplay.textContent = size.value
+
+    size.addEventListener('input', () => {
+        console.log(size.value)
+        valueDisplay.textContent = size.value
+        
+        registerGrid(size.value)
     })
-    canvas.addEventListener('mouseup', () => {
-        drawing = false
-        console.log('Mouse up, not drawing')
-    })
+}
+
+function registerGrid(size = 10) {
+    let canvas = document.querySelector('#canvas');
+    Array.from(canvas.children).forEach(c => c.remove());
     
-    for (let i = 0; i < (400 * 400) / 100; i++) {
-        let item = document.createElement('div')
-        item.style = `border: none; height: 10px; width: 10px; flex: 0 0 10px`
-        item.classList.add('canvasItem')
-        item.draggable = false
+    let drawing = false;
+    canvas.addEventListener('mousedown', () => {
+        drawing = true;
+        console.log('Mouse down, drawing');
+    });
+    canvas.addEventListener('mouseup', () => {
+        drawing = false;
+        console.log('Mouse up, not drawing');
+    });
+    
+    const canvasSize = 400;
+    const itemsPerSide = Math.floor(canvasSize / size);
+    const adjustedSize = canvasSize / itemsPerSide;
+    const totalItems = itemsPerSide * itemsPerSide;
+
+    for (let i = 0; i < totalItems; i++) {
+        let item = document.createElement('div');
+        item.style.cssText = `
+            width: ${adjustedSize}px;
+            height: ${adjustedSize}px;
+            flex: 0 0 ${adjustedSize}px;
+        `;
+        item.classList.add('canvasItem');
+        item.draggable = false;
 
         item.addEventListener('mouseover', () => {
-            let color = document.querySelector('#colorPicker').value
+            let color = document.querySelector('#colorPicker').value;
 
             if(toolType == 'eraser'){
-                color = 'transparent'
+                color = 'transparent';
             }
             if(toolType == 'rainbow'){
-                color = getRandomColor()
+                color = getRandomColor();
             }
-            
-            paintColor(item, color, drawing)
-        })
+
+            paintColor(item, color, drawing);
+        });
     
-        canvas.appendChild(item)
+        canvas.appendChild(item);
     }
 }
 
@@ -97,7 +123,7 @@ function registerDrawButtons() {
 }
 
 function register() {
-    registerGrid()
+    registerGridSize()
     registerColorPicker()
     registerDrawButtons()
 }
